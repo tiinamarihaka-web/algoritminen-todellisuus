@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Box Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <!-- Vaihe 1: Tervetuloa -->
+        <div class="stage" id="stage1">
+            <h1>Tervetuloa</h1>
+            <p>Tämä on harmiton kysely makumieltymyksistäsi.</p>
+            <button onclick="nextStage(2)">Aloita</button>
+        </div>
+
+        <!-- Vaihe 2: Kysymykset -->
+        <div class="stage hidden" id="stage2">
+            <h2>Valitse mieluisin väri</h2>
+            <div class="choices">
+                <div class="choice" onclick="recordChoice('color', 'blue', 'Analyyttinen, teknologia-orientoitunut')">🔵 Sininen</div>
+                <div class="choice" onclick="recordChoice('color', 'red', 'Impulsiivinen, tunteellinen')">🔴 Punainen</div>
+                <div class="choice" onclick="recordChoice('color', 'green', 'Ympäristötietoinen, vasemmistolainen')">🟢 Vihreä</div>
+                <div class="choice" onclick="recordChoice('color', 'black', 'Itsenäinen, kriittinen')">⚫ Musta</div>
+            </div>
+        </div>
+
+        <!-- Vaihe 3: Aika -->
+        <div class="stage hidden" id="stage3">
+            <h2>Mihin aikaan heräät yleensä?</h2>
+            <div class="choices">
+                <div class="choice" onclick="recordChoice('time', 'early', 'Tunnollinen, konservatiivinen')">Ennen 7:00</div>
+                <div class="choice" onclick="recordChoice('time', 'normal', 'Keskiverto, ennustettava')">7:00-9:00</div>
+                <div class="choice" onclick="recordChoice('time', 'late', 'Luova, boheemi')">9:00 jälkeen</div>
+            </div>
+        </div>
+
+        <!-- Vaihe 4: Lemmikit -->
+        <div class="stage hidden" id="stage4">
+            <h2>Kumpi on parempi?</h2>
+            <div class="choices">
+                <div class="choice" onclick="recordChoice('pet', 'dog', 'Sosiaalinen, ulospäinsuuntautunut'); showPersonalized()">🐕 Koira</div>
+                <div class="choice" onclick="recordChoice('pet', 'cat', 'Introvertti, itsenäinen'); showPersonalized()">🐱 Kissa</div>
+                <div class="choice" onclick="recordChoice('pet', 'none', 'Urbaani, sitoutumaton'); showPersonalized()">Ei kumpaakaan</div>
+            </div>
+        </div>
+
+        <!-- Vaihe 5: "Personoitu" sisältö -->
+        <div class="stage hidden" id="stage5">
+            <h2>Sisältö ladataan...</h2>
+            <div id="personalized-content"></div>
+            <button onclick="revealTruth()">Mitä tapahtui?</button>
+        </div>
+
+        <!-- Vaihe 6: Paljastus -->
+        <div class="stage hidden" id="stage6">
+            <h2>🔍 Algoritmi päätteli sinusta:</h2>
+            <div id="revelations"></div>
+            <div class="warning">
+                <p>⚠️ Todellisissa algoritmeissa nämä päätelmät tehdään tuhansista datapisteistä, 
+                vaikuttavat siihen mitä näet verkossa, ja voivat määrittää mahdollisuuksiasi elämässä.</p>
+            </div>
+            <button onclick="restart()">Kokeile uudelleen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
